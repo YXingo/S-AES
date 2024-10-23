@@ -1,7 +1,7 @@
 <template>
   <el-container class="container">
     <el-header class="header">
-      <h2>S-DES加解密系统</h2>
+      <h2>S-AES加解密系统</h2>
     </el-header>
     <el-main class="main">
 
@@ -79,7 +79,134 @@
                 <el-input v-model="deResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
               </div>
             </div>
-            <div v-if="cardID == 2" class="input">
+            <div v-if="cardID == 2" class="input3rd">
+              <div class="input1">
+                <h2 class="input_title">双重加密</h2>
+                <div class="input_content">
+                  <div class="ic_left">
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>明文</h3>
+                      <el-input v-model="plainText" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入明文"/>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密钥</h3>
+                      <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密钥"/>
+                      <el-button style="font-weight: 600; margin-left: 20px;"
+                                 @click="getKey">获取随机密钥
+                      </el-button>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                      <el-button style="font-weight: 600;" @click="encryption">开始加密</el-button>
+                      <el-input v-model="enResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                    </div>
+                  </div>
+                  <div class="ic_right">
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密文</h3>
+                      <el-input v-model="cipherText" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密文"/>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密钥</h3>
+                      <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密钥"/>
+                      <el-button style="font-weight: 600; margin-left: 20px;"
+                                 @click="getKey">获取随机密钥
+                      </el-button>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                      <el-button style="font-weight: 600;" @click="decryption">开始解密</el-button>
+                      <el-input v-model="deResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="input2">
+                <h2 class="input_title">中间相遇攻击</h2>
+                <div class="input_content">
+                  <div class="ic_left">
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>明文</h3>
+                      <el-input v-model="cipherText" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入明文"/>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密文</h3>
+                      <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密文"/>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                      <el-button style="font-weight: 600;" @click="decryption">开始攻击</el-button>
+                      <el-input v-model="deResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                    </div>
+                  </div>
+                  <div class="ic_right">
+
+                  </div>
+                </div>
+              </div>
+              <div class="input3">
+                <h2 class="input_title">三重加密</h2>
+                <div class="input_content">
+                  <div class="ic_left">
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>明文</h3>
+                      <el-input v-model="plainText" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入明文"/>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密钥</h3>
+                      <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密钥"/>
+                      <el-button style="font-weight: 600; margin-left: 20px;"
+                                 @click="getKey">获取随机密钥
+                      </el-button>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                      <el-button style="font-weight: 600;" @click="encryption">开始加密</el-button>
+                      <el-input v-model="enResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                    </div>
+                  </div>
+                  <div class="ic_right">
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密文</h3>
+                      <el-input v-model="cipherText" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密文"/>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                      <h3>密钥</h3>
+                      <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                                placeholder="请输入密钥"/>
+                      <el-button style="font-weight: 600; margin-left: 20px;"
+                                 @click="getKey">获取随机密钥
+                      </el-button>
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                      <el-button style="font-weight: 600;" @click="decryption">开始解密</el-button>
+                      <el-input v-model="deResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="cardID == 3" class="input">
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>明文</h3>
@@ -88,11 +215,52 @@
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
-                <h3>密文</h3>
-                <el-input v-model="cipherText" style="width: 395px; margin-left: 20px; margin-right: 20px;"
-                          placeholder="请输入密文"/>
-                <el-button style="font-weight: 600;" @click="crack">开始破解</el-button>
+                <h3>密钥</h3>
+                <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                          placeholder="请输入密钥"/>
+                <el-button style="font-weight: 600; margin-left: 20px;"
+                           @click="getKey">获取随机密钥
+                </el-button>
               </div>
+              <div
+                  style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                <h3>初始向量</h3>
+                <el-input v-model="secretKey" style="width: 460px; margin-left: 20px;"
+                          placeholder="请输入初始向量"/>
+                <el-button style="font-weight: 600; margin-left: 20px;"
+                           @click="getKey">获取随机初始向量
+                </el-button>
+              </div>
+              <div
+                  style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                <el-button style="font-weight: 600;" @click="encryption">开始加密</el-button>
+                <el-input v-model="enResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+              </div>
+              <br>
+              <div
+                  style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; border-top-color: grey; border-top-style: dashed">
+                <h3>密文</h3>
+                <el-input v-model="plainText" style="width: 500px; margin-left: 20px;"
+                          placeholder="请输入密文"/>
+              </div>
+              <div
+                  style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                <h3>密钥</h3>
+                <el-input v-model="secretKey" style="width: 500px; margin-left: 20px;"
+                          placeholder="请输入密钥"/>
+              </div>
+              <div
+                  style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
+                <h3>初始向量</h3>
+                <el-input v-model="secretKey" style="width: 460px; margin-left: 20px;"
+                          placeholder="请输入初始向量"/>
+              </div>
+              <div
+                  style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
+                <el-button style="font-weight: 600;" @click="encryption">开始解密</el-button>
+                <el-input v-model="enResult" style="width: 450px; margin-left: 20px;" placeholder=""/>
+              </div>
+
             </div>
           </div>
         </div>
@@ -127,6 +295,10 @@ function changeID1() {
 
 function changeID2() {
   cardID.value = 2;
+}
+
+function changeID3() {
+  cardID.value = 3;
 }
 
 // 加密函数，从后端获取加密结果
@@ -347,12 +519,78 @@ function exitSystem() {
 }
 
 .input {
-  width: 60%;
-  height: 40%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
   /* align-items: center; */
   justify-content: left;
 }
+
+.input3rd {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  /* align-items: center; */
+  justify-content: left;
+}
+
+.input1 {
+  width: 100%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input2 {
+  width: 100%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input3 {
+  width: 100%;
+  height: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input_title {
+  margin-left: 30px;
+}
+
+.input_content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.ic_left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  //background-color: green;
+  border-right: gray;
+  border-right-width: 2px;
+  border-right-style: dashed;
+}
+
+
+.ic_right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  //background-color: red;
+}
+
 </style>
