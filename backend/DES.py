@@ -262,35 +262,3 @@ if __name__ == "__main__":
     data = [1, 1, 1, 1, 1, 1, 1, 1]
     key = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     print(sdes_encrypt(data, key))
-    # # 初始化数据
-    # data = "Hello, S-DES!"
-    # key = generate_random_key()
-    # print(f"随机生成的10位密钥: {''.join(str(bit) for bit in key)}")
-    # # 加密
-    # encrypted_text = encrypt(data, key)
-    # print(f"加密后的Base64数据: {encrypted_text}")
-    # # 解密
-    # decrypted_text = decrypt(encrypted_text, key)
-    # print(f"解密后的文本: {decrypted_text}")
-    #
-    # # 暴力破解示例：寻找所有可能的密钥
-    # print("\n--- 寻找所有可能的密钥 ---")
-    # # 为破解目的，选择明文和对应的密文
-    # plaintext_crack = data[:2]  # 例如 "He"
-    # ciphertext_crack = encrypt(plaintext_crack, key)
-    # print(f"要破解的明文: '{plaintext_crack}'")
-    # print(f"对应的密文 (Base64): {ciphertext_crack}")
-    #
-    # start_time = time.time()
-    # found_keys = find_all_keys_sdes(plaintext_crack, ciphertext_crack)
-    # end_time = time.time()
-    # time_taken = end_time - start_time
-    #
-    # if found_keys:
-    #     print(f"找到的密钥数量: {len(found_keys)}")
-    #     print("找到的密钥列表:")
-    #     for k in found_keys:
-    #         print(k)
-    #     print(f"用时: {time_taken:.4f} 秒")
-    # else:
-    #     print("未找到匹配的密钥。")
