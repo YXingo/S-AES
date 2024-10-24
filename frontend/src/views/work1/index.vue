@@ -221,7 +221,7 @@
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
-                <el-button style="font-weight: 600;" @click="doubleEncryption">开始加密</el-button>
+                <el-button style="font-weight: 600;" @click="tripleEncryption">开始加密</el-button>
                 <el-input v-model="tripleEnCipherText" style="width: 450px; margin-left: 20px;" placeholder=""/>
               </div>
 
@@ -259,7 +259,7 @@
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
-                <el-button style="font-weight: 600;" @click="doubleDecryption">开始解密</el-button>
+                <el-button style="font-weight: 600;" @click="tripleDecryption">开始解密</el-button>
                 <el-input v-model="tripleDePlainText" style="width: 450px; margin-left: 20px;" placeholder=""/>
               </div>
             </div>
@@ -355,7 +355,7 @@
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
-                <el-button style="font-weight: 600;" @click="encryption">开始解密</el-button>
+                <el-button style="font-weight: 600;" @click="workDecryption">开始解密</el-button>
                 <el-input v-model="workDePlainText" style="width: 450px; margin-left: 20px;" placeholder=""/>
               </div>
             </div>
@@ -433,6 +433,7 @@ function changeID(id) {
 }
 
 
+// 二进制加密
 async function binEncryption() {
   try {
     // 检查输入是否为空
@@ -455,7 +456,7 @@ async function binEncryption() {
   }
 }
 
-
+// 二进制解密
 async function binDecryption() {
   try {
     // 检查输入是否为空
@@ -478,6 +479,7 @@ async function binDecryption() {
   }
 }
 
+// ASCII加密
 async function asciiEncryption() {
   try {
     // 检查输入是否为空
@@ -500,7 +502,7 @@ async function asciiEncryption() {
   }
 }
 
-
+// ASCII解密
 async function asciiDecryption() {
   try {
     // 检查输入是否为空
@@ -523,6 +525,7 @@ async function asciiDecryption() {
   }
 }
 
+// 双重加密
 async function doubleEncryption() {
   try {
     // 检查输入是否为空
@@ -546,7 +549,7 @@ async function doubleEncryption() {
   }
 }
 
-
+// 双重解密
 async function doubleDecryption() {
   try {
     // 检查输入是否为空
@@ -570,6 +573,7 @@ async function doubleDecryption() {
   }
 }
 
+// 三重加密
 async function tripleEncryption() {
   try {
     // 检查输入是否为空
@@ -594,7 +598,7 @@ async function tripleEncryption() {
   }
 }
 
-
+// 三重解密
 async function tripleDecryption() {
   try {
     // 检查输入是否为空
@@ -619,6 +623,7 @@ async function tripleDecryption() {
   }
 }
 
+// 中间相遇攻击
 async function attack() {
   try {
     // 检查输入是否为空
@@ -642,6 +647,7 @@ async function attack() {
   }
 }
 
+// 工作模式加密
 async function workEncryption() {
   try {
     // 检查输入是否为空
@@ -665,7 +671,7 @@ async function workEncryption() {
   }
 }
 
-
+// 工作模式解密
 async function workDecryption() {
   try {
     // 检查输入是否为空
@@ -689,7 +695,7 @@ async function workDecryption() {
   }
 }
 
-// 随机生成密钥
+// 随机生成二进制密钥
 async function getBinKey(target) {
   try {
     // 发送请求到后端
@@ -704,8 +710,7 @@ async function getBinKey(target) {
   }
 }
 
-
-// 随机生成密钥
+// 随机生成ASCII密钥
 async function getKey(target) {
   try {
     // 发送请求到后端

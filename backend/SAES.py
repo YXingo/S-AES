@@ -92,7 +92,7 @@ def key_expansion(key):
     w = [0] * 6
     # 分割密钥为 w0 和 w1（8位）
     w[0] = (key >> 8) & 0xFF  # 高8位
-    w[1] = key & 0xFF         # 低8位
+    w[1] = key & 0xFF  # 低8位
 
     # 计算 w2
     temp = w[1]
@@ -191,3 +191,10 @@ def decrypt(ciphertext, key):
     # 将状态转换回16位整数
     plaintext = (state[0] << 12) | (state[1] << 8) | (state[2] << 4) | state[3]
     return plaintext
+
+
+if __name__ == '__main__':
+    # 测试加密
+    plaintext = '6bc1'  # 16 进制字符串
+    key = '3a94'  # 16 进制字符串
+    print(encrypt(int(plaintext, 16), int(key, 16)))
