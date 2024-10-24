@@ -54,7 +54,7 @@
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥</h3>
                 <el-input v-model="binEnSecretKey" style="width: 500px; margin-left: 20px;" placeholder="请输入密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getBinKey(binEnSecretKey)">获取随机密钥
+                <el-button style="font-weight: 600; margin-left: 20px;" @click="getBinKey">获取随机密钥
                 </el-button>
               </div>
               <div
@@ -68,22 +68,19 @@
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密文</h3>
-                <el-input v-model="binDePlainText" style="width: 500px; margin-left: 20px;"
-                          placeholder="请输入明文"/>
+                <el-input v-model="binDeCipherText" style="width: 500px; margin-left: 20px;"
+                          placeholder="请输入密文"/>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥</h3>
                 <el-input v-model="binDeSecretKey" style="width: 500px; margin-left: 20px;"
                           placeholder="请输入密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;"
-                           @click="getBinKey(binDeSecretKey)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
                 <el-button style="font-weight: 600;" @click="binDecryption">开始解密</el-button>
-                <el-input v-model="binDeCipherText" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                <el-input v-model="binDePlainText" style="width: 450px; margin-left: 20px;" placeholder=""/>
               </div>
             </div>
             <div v-if="cardID == 1" class="input">
@@ -97,7 +94,7 @@
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥</h3>
                 <el-input v-model="asciiEnSecretKey" style="width: 500px; margin-left: 20px;" placeholder="请输入密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(asciiEnSecretKey)">获取随机密钥
+                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey">获取随机密钥
                 </el-button>
               </div>
               <div
@@ -111,22 +108,19 @@
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密文</h3>
-                <el-input v-model="asciiDePlainText" style="width: 500px; margin-left: 20px;"
-                          placeholder="请输入明文"/>
+                <el-input v-model="asciiDeCipherText" style="width: 500px; margin-left: 20px;"
+                          placeholder="请输入密文"/>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥</h3>
                 <el-input v-model="asciiDeSecretKey" style="width: 500px; margin-left: 20px;"
                           placeholder="请输入密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;"
-                           @click="getKey(asciiDeSecretKey)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
                 <el-button style="font-weight: 600;" @click="asciiDecryption">开始解密</el-button>
-                <el-input v-model="asciiDeCipherText" style="width: 450px; margin-left: 20px;" placeholder=""/>
+                <el-input v-model="asciiDePlainText" style="width: 450px; margin-left: 20px;" placeholder=""/>
               </div>
             </div>
             <div v-if="cardID == 2" class="input">
@@ -141,16 +135,12 @@
                 <h3>密钥1</h3>
                 <el-input v-model="doubleEnSecretKey1" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第一把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(doubleEnSecretKey1)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥2</h3>
                 <el-input v-model="doubleEnSecretKey2" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第二把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(doubleEnSecretKey2)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
@@ -171,16 +161,12 @@
                 <h3>密钥1</h3>
                 <el-input v-model="doubleDeSecretKey1" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第一把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(doubleDeSecretKey1)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥2</h3>
                 <el-input v-model="doubleDeSecretKey2" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第二把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(doubleDeSecretKey2)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
@@ -200,24 +186,18 @@
                 <h3>密钥1</h3>
                 <el-input v-model="tripleEnSecretKey1" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第一把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(tripleEnSecretKey1)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥2</h3>
                 <el-input v-model="tripleEnSecretKey2" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第二把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(tripleEnSecretKey2)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥3</h3>
                 <el-input v-model="tripleEnSecretKey3" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第三把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(tripleEnSecretKey3)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
@@ -238,24 +218,18 @@
                 <h3>密钥1</h3>
                 <el-input v-model="tripleDeSecretKey1" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第一把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(tripleDeSecretKey1)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥2</h3>
                 <el-input v-model="tripleDeSecretKey2" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第二把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(tripleDeSecretKey2)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>密钥3</h3>
                 <el-input v-model="tripleDeSecretKey3" style="width: 490px; margin-left: 20px;"
                           placeholder="请输入第三把密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;" @click="getKey(tripleDeSecretKey3)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
@@ -308,9 +282,6 @@
                 <h3>密钥</h3>
                 <el-input v-model="workEnSecretKey" style="width: 500px; margin-left: 20px;"
                           placeholder="请输入密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;"
-                           @click="getKey(workEnSecretKey)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
@@ -318,7 +289,7 @@
                 <el-input v-model="workEnVector" style="width: 460px; margin-left: 20px;"
                           placeholder="请输入初始向量"/>
                 <el-button style="font-weight: 600; margin-left: 20px;"
-                           @click="getVector(workEnVector)">获取随机初始向量
+                           @click="getVector">获取随机初始向量
                 </el-button>
               </div>
               <div
@@ -340,18 +311,12 @@
                 <h3>密钥</h3>
                 <el-input v-model="workDeSecretKey" style="width: 500px; margin-left: 20px;"
                           placeholder="请输入密钥"/>
-                <el-button style="font-weight: 600; margin-left: 20px;"
-                           @click="getKey(workDeSecretKey)">获取随机密钥
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px">
                 <h3>初始向量</h3>
                 <el-input v-model="workDeVector" style="width: 460px; margin-left: 20px;"
                           placeholder="请输入初始向量"/>
-                <el-button style="font-weight: 600; margin-left: 20px;"
-                           @click="getVector(workDeVector)">获取随机初始向量
-                </el-button>
               </div>
               <div
                   style="display: flex; flex-direction: row; align-items: center; justify-content: left; margin-left: 30px; margin-top: 10px;">
@@ -424,6 +389,8 @@ const workDePlainText = ref(""); // 工作模式解密的明文
 const workDeCipherText = ref(""); // 工作模式解密的密文
 const workDeSecretKey = ref(""); // 工作模式解密的密钥
 const workDeVector = ref(""); // 工作模式解密的初始向量
+
+
 
 const timeTaken = ref("");
 
@@ -696,14 +663,14 @@ async function workDecryption() {
 }
 
 // 随机生成二进制密钥
-async function getBinKey(target) {
+async function getBinKey() {
   try {
     // 发送请求到后端
     const response = await axios.post('http://localhost:5000/getBinKey', {})
 
-    target.value = response.data.secretKey
+    binEnSecretKey.value = response.data.secretKey
 
-    console.log('获取密钥成功:', secretKey.value)
+    console.log('获取密钥成功:', binEnSecretKey.value)
   } catch (error) {
     console.error('获取密钥失败:', error)
     alert('获取密钥失败，请稍后再试')
@@ -711,14 +678,28 @@ async function getBinKey(target) {
 }
 
 // 随机生成ASCII密钥
-async function getKey(target) {
+async function getKey() {
   try {
     // 发送请求到后端
     const response = await axios.post('http://localhost:5000/getKey', {})
 
-    target.value = response.data.secretKey
+    asciiEnSecretKey.value = response.data.secretKey
 
-    console.log('获取密钥成功:', secretKey.value)
+    console.log('获取密钥成功:', asciiEnSecretKey.value)
+  } catch (error) {
+    console.error('获取密钥失败:', error)
+    alert('获取密钥失败，请稍后再试')
+  }
+}
+
+async function getVector() {
+  try {
+    // 发送请求到后端
+    const response = await axios.post('http://localhost:5000/getBinKey', {})
+
+    workEnVector.value = response.data.secretKey
+
+    console.log('获取密钥成功:', workEnVector.value)
   } catch (error) {
     console.error('获取密钥失败:', error)
     alert('获取密钥失败，请稍后再试')
